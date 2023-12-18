@@ -273,10 +273,14 @@ bool Game::ProcessCommand(std::string command, std::string mainArg, std::string 
 
 					bool inputAccepted = false;
 					while (!inputAccepted) {
-						m_logger->Write("y/n > ");
+                                            std::string confirm;
 
-						std::string confirm;
+#ifdef __EMSCRIPTEN__
+                                            if (js_wrapper::getline("y/n > ", confirm)) {
+#else
+                                                m_logger->Write("y/n > ");
 						if (std::getline(std::cin, confirm)) {
+#endif
 							if (confirm.at(0) == 'y' || confirm.at(0) == 'Y') {
 								m_logger->WriteLine("Onwards!");
 								InitialiseCombat();

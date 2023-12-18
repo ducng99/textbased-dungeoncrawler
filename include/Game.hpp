@@ -1,6 +1,10 @@
 #ifndef _GAME_HPP_
 #define _GAME_HPP_
 
+#ifdef __EMSCRIPTEN__
+#include "JS_Wrapper.hpp"
+#endif
+
 #include "pcg-random/pcg_random.hpp"
 #include "pcg-random/pcg_extras.hpp"
 

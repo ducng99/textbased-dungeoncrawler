@@ -1,4 +1,19 @@
 # TextBased-DungeonCrawler
+
+## A WASM build fork
+
+This is a fork of [TextBased-DungeonCrawler](https://github.com/TechniMan/textbased-dungeoncrawler) built to WASM using EMSDK to run in web environment.
+
+This version replaces `std::getline` with a custom function from JS-env to avoid calling `window.prompt()`. Some other small changes made to make the code compiles.
+
+### WASM build
+
+```bash
+mkdir build && cd build
+emcmake cmake ..
+emmake make
+```
+
 ## A text-based dungeon crawler written with straight-forward C++
 
 [![Run on Repl.it](https://repl.it/badge/github/TechniMan/textbased-dungeoncrawler)](https://repl.it/github/TechniMan/textbased-dungeoncrawler)

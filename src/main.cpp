@@ -36,8 +36,12 @@ int main(int argc, char ** args) {
     
     // begin game loop
     std::string lineIn;
+#ifdef __EMSCRIPTEN__
+    while (js_wrapper::getline("\n> ", lineIn)) {
+#else
     logger->Write("\n> ");
     while (std::getline(std::cin, lineIn)) {
+#endif
         if (lineIn.size() > 0) {
             std::vector<std::string> input = split(lineIn, ' ');
             std::string command = input.at(0);
@@ -54,9 +58,11 @@ int main(int argc, char ** args) {
             }
         }
 
+#ifndef __EMSCRIPTEN__
         // begin the next line to prompt user input
         logger->Write("\n> ");
+#endif
     }
 
-    return 0;
+    exit(0);
 }
