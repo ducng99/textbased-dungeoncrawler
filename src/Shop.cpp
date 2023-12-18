@@ -9,7 +9,7 @@ Shop::~Shop(void) {
 
 }
 
-void Shop::SetInventoryAndPrices(const std::map<ITEMS, uint>& itemsAndPrices) noexcept {
+void Shop::SetInventoryAndPrices(const std::map<ITEMS, unsigned int>& itemsAndPrices) noexcept {
     m_itemInventory.Clear();
     for (auto itemAndPrice : itemsAndPrices) {
         m_itemInventory.AddItem(itemAndPrice.first, itemAndPrice.second);
@@ -20,7 +20,7 @@ const ItemInventory& Shop::GetInventory(void) const noexcept {
     return m_itemInventory;
 }
 
-const uint Shop::GetCostOf(ITEMS item) const noexcept {
+const unsigned int Shop::GetCostOf(ITEMS item) const noexcept {
     auto items = m_itemInventory.GetItems();
     if (items.count(item) == 1)
     {

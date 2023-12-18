@@ -47,7 +47,7 @@ void Game::EndCombat() {
 void Game::InitialiseShop() {
 	if (m_townShop == nullptr) {
 		m_townShop = new Shop();
-		auto shopInv = std::map<ITEMS, uint>();
+		auto shopInv = std::map<ITEMS, unsigned int>();
 		shopInv.emplace(ITEMS::HEALTH_POTION, 10U);
 		m_townShop->SetInventoryAndPrices(shopInv);
 	}
@@ -218,7 +218,7 @@ bool Game::ProcessCommand(std::string command, std::string mainArg, std::string 
 					}
 					else if (mainArg == "buy") {
 						auto item = Item::GetByName(itemName);
-						uint itemCost = m_townShop->GetCostOf(item);
+						unsigned int itemCost = m_townShop->GetCostOf(item);
 						if (itemCost == 0) {
 							m_logger->WriteLine("\"'Fraid I en't got any o' those in stock at the moment.\"");
 						}

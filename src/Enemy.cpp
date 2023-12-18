@@ -1,6 +1,6 @@
 #include "Enemy.hpp"
 
-Enemy::Enemy(std::string& name, int gold, uint attackBonus, uint dodgeBonus, uint hitPoints)
+Enemy::Enemy(std::string& name, int gold, unsigned int attackBonus, unsigned int dodgeBonus, unsigned int hitPoints)
     : Creature(name, hitPoints * 10U),
       m_gold(gold) {
     m_attackSkill = attackBonus * 10U;

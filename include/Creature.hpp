@@ -49,8 +49,8 @@ public:
     // return "{name} - Health: {current} / {max} Str: {str} Dex: {dex} Con: {con}"
     virtual std::string ToString() const;
 
-    uint GetAttackBonus() const noexcept;
-    uint GetDodgeBonus() const noexcept;
+    unsigned int GetAttackBonus() const noexcept;
+    unsigned int GetDodgeBonus() const noexcept;
     void ImproveAttackSkill() noexcept;
     void ImproveDodgeSkill() noexcept;
     // true: Still alive. false: Not alive; game over.

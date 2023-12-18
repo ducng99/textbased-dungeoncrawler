@@ -69,11 +69,11 @@ std::string Creature::ToString() const {
         + " TUF:" + std::to_string(m_toughnessSkill);
 }
 
-uint Creature::GetAttackBonus(void) const noexcept {
+unsigned int Creature::GetAttackBonus(void) const noexcept {
     return m_attackSkill / 10U;
 }
 
-uint Creature::GetDodgeBonus(void) const noexcept {
+unsigned int Creature::GetDodgeBonus(void) const noexcept {
     return m_dodgeSkill / 10U;
 }
 
