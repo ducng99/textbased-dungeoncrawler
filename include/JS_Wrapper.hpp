@@ -6,6 +6,9 @@
 
 namespace js_wrapper {
     bool getline(std::string prefix, std::string & lineIn);
+
+    void initSaveFiles(std::string saveDirName);
+    void syncSaveFiles();
 }
 
 #endif // _JS_WRAPPER_HPP_

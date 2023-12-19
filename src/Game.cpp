@@ -1,6 +1,7 @@
 #include "Game.hpp"
 
 #include <cmath>
+#include <filesystem>
 
 std::string GAME_SAVES_DIRECTORY = "saves/";
 
@@ -15,6 +16,10 @@ unsigned int Game::RollDie(void) {
 Game::Game() {
 	m_logger = new Logger();
 	m_rng = pcg32();
+
+#ifdef __EMSCRIPTEN__
+    js_wrapper::initSaveFiles(GAME_SAVES_DIRECTORY);
+#endif
 }
 
 
@@ -174,8 +179,7 @@ bool Game::ProcessCommand(std::string command, std::string mainArg, std::string 
 					m_logger->WriteLine("Saved " + m_player->GetName() + " to file!");
 				}
 				else {
-					std::string command = "mkdir " + GAME_SAVES_DIRECTORY;
-					system(command.c_str());
+					std::filesystem::create_directories(GAME_SAVES_DIRECTORY);
 					if (m_player->Save(GAME_SAVES_DIRECTORY + m_player->GetName() + ".sav")) {
 						m_logger->WriteLine("Saved " + m_player->GetName() + " to file!");
 					}

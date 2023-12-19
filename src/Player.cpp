@@ -1,4 +1,5 @@
 #include "Player.hpp"
+#include "JS_Wrapper.hpp"
 
 #include <iomanip> // std::setw
 #include <fstream>
@@ -47,6 +48,10 @@ bool Player::Save(std::string filename) {
     }
     fileOut << std::setw(2) << jOut << std::endl;
     fileOut.close();
+
+#ifdef __EMSCRIPTEN__
+    js_wrapper::syncSaveFiles();
+#endif
 
     return true;
 }
