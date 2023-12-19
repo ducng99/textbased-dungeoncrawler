@@ -64,5 +64,5 @@ int main(int argc, char ** args) {
 #endif
     }
 
-    exit(0);
+    return 0;
 }

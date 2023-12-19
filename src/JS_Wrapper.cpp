@@ -9,11 +9,11 @@
 using namespace emscripten;
 
 EM_ASYNC_JS(void, initFileStorage, (const char* saveDir), {
-    await new Promise((resolve, reject) => {
-        const dir = UTF8ToString(saveDir);
-        FS.mkdir(dir);
-        FS.mount(IDBFS, {}, dir);
+    const dir = UTF8ToString(saveDir);
+    FS.mkdir(dir);
+    FS.mount(IDBFS, {}, dir);
 
+    await new Promise((resolve, reject) => {
         FS.syncfs(true, function(err) {
             if (err) {
                 reject(err);
@@ -22,6 +22,8 @@ EM_ASYNC_JS(void, initFileStorage, (const char* saveDir), {
             }
         });
     });
+
+    return;
 });
 
 EM_ASYNC_JS(void, asyncSaveFiles, (), {
@@ -34,6 +36,8 @@ EM_ASYNC_JS(void, asyncSaveFiles, (), {
             }
         });
     });
+
+    return;
 });
 
 val JS_shell = val::global("shell");
